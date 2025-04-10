@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
 
-st.title("SQL Data Explorer")
+st.title("SQL Data Explorer And Its running live")
 
 server = '20.164.64.41'  # or 'your-server-name'
 database = 'prod_warehouse.supercard'
