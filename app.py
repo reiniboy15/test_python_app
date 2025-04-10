@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 from sqlalchemy import create_engine
 
 st.title("SQL Data Explorer And Its running live")
@@ -22,3 +23,11 @@ st.line_chart(df.set_index("dep_year"))
 
 column_to_plot = st.selectbox("Choose a column to visualize", df.columns)
 st.bar_chart(df[column_to_plot].value_counts())
+
+selected_year = st.selectbox("Select Year", df['dep_year'].unique())
+
+filtered_df = df[df['dep_year'] == selected_year]
+
+
+fig = px.bar(filtered_df, x="dep_year", y="dep_amount", title="Deposit Amount by Year")
+st.plotly_chart(fig)
